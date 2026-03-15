@@ -27,7 +27,7 @@ $$\theta(0)=0,\quad x(0)=0,\quad y(0)=0,\quad \theta'(L)=0$$
 
 The two unknowns $EI_\text{eff}$ and $k_p$ are treated as **trainable parameters** inside the PINN. The PINN total loss combines:
 
-$$\mathcal{L} = \underbrace{\mathcal{L}_\text{phys}}_{\text{PDE residual}} + \underbrace{\mathcal{L}_\text{BC}}_{\text{boundary cond.}} + \underbrace{\mathcal{L}_\text{shape}}_{\text{centerline obs.}} + \underbrace{\mathcal{L}_\text{tip}}_{\text{tip disp. \& angle}} + \underbrace{\mathcal{L}_\text{block}}_{\text{blocked force}}$$
+$$\mathcal{L} = \underbrace{\mathcal{L}_\text{phys}}_{\text{PDE residual}} + \underbrace{\mathcal{L}_\text{BC}}_{\text{boundary cond.}} + \underbrace{\mathcal{L}_\text{shape}}_{\text{centerline obs.}} + \underbrace{\mathcal{L}_\text{tip}}_{\text{tip disp. \ angle}} + \underbrace{\mathcal{L}_\text{block}}_{\text{blocked force}}$$
 
 **Blocked force** is defined as the tip reaction force required to hold $y(L)=0$ under pressure loading — the physically meaningful definition for soft gripper design. It is computed via a constrained BVP solver and used as a supervised observation.
 

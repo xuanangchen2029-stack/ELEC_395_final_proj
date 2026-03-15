@@ -100,35 +100,34 @@ $$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\left(Ls - \frac{s^2}{2}\right), \qqu
 
 ## Actuator Geometry
 
-| Parameter | Value | | Parameter | Value |
-|-----------|-------|-|-----------|-------|
-| Total length $L$ | 200 mm | | Active zig-zag region | 110 mm |
-| Cross-section $w \times h$ | 22 × 22 mm | | Number of teeth $N$ | 10 |
-| Wall thickness $t$ | 2 mm | | Tooth pitch | 11 mm |
-| Inlet plain $l_1$ | 20 mm | | Tooth depth | 9 mm |
-| Free-tip plain $l_2$ | 20 mm | | Compliance factor | 0.85 |
+| Parameter | Value |
+|-----------|-------|
+| Total length $L$ | 200 mm |
+| Cross-section $w \times h$ | 22 × 22 mm |
+| Wall thickness $t$ | 2 mm |
+| Inlet plain region $l_1$ | 20 mm |
+| Free-tip plain region $l_2$ | 20 mm |
+| Active zig-zag region | 110 mm |
+| Number of teeth $N$ | 10 |
+| Tooth pitch | 11 mm |
+| Tooth depth | 9 mm |
+| Compliance factor | 0.85 |
 
-![geometry summary](results/figures/zigzag_geometry_summary.png)
-
-*Six-panel summary: cross-section (y-z plane), single tooth profile with dimensions, tip response and angle vs pressure, axial region layout, centerline family across the full pressure range, and model parameter table.*
-
-<details>
-<summary>Additional geometry figures (2-D diagram · 3-D undeformed · 3-D deformed)</summary>
-
-**2-D annotated side view**
+### 2-D Side View
 
 ![2D side view](results/figures/zigzag_2d_side_view.png)
 
+*Annotated side-view diagram showing all geometric dimensions, the zig-zag tooth profile, inlet/free-tip plain regions, and pressure inlet direction.*
 
-*Orange = zig-zag teeth; green = plain inlet / free-tip end sections.*
-
-**3-D deformed shapes at four pressure levels**
+### 3-D Deformed Shapes
 
 ![3D deformed](results/figures/zigzag_3d_deformed.png)
 
-*At 100 kPa the tip angle exceeds 100°, entering the large-deformation regime where the reduced-order model begins to break down.*
+*Cross-section extruded along the analytically computed centerline at four pressure levels (10, 40, 69, 100 kPa). At 100 kPa the tip angle exceeds 100°, entering a large-deformation regime where the reduced-order model begins to break down.*
 
-</details>
+### Geometry Summary
+
+![geometry summary](results/figures/zigzag_geometry_summary.png)
 
 ---
 

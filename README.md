@@ -1,4 +1,4 @@
-# Physics-Informed Neural Network for Inverse Parameter Identification of a Pneumatic Zig-Zag Soft Bending Actuator
+# Physics-Informed Neural Network for Inverse Parameter Identification of a Pneumatic Soft Bending Actuator
 
 A reduced-order inverse modeling framework that identifies effective mechanical parameters of a pneumatic zig-zag soft bending actuator from sparse displacement and force observations, using a Physics-Informed Neural Network (PINN).
 

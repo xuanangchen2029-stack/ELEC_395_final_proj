@@ -40,7 +40,7 @@ $$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\left(Ls - \frac{s^2}{2}\right), \qqu
 
 | Parameter | Value |
 |-----------|-------|
-| Total length $L$ | 150 mm |
+| Total length $L$ | 200 mm |
 | Cross-section $w \times h$ | 22 × 22 mm |
 | Wall thickness $t$ | 2 mm |
 | Inlet plain region $l_1$ | 20 mm |

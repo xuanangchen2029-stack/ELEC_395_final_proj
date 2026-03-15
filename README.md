@@ -119,9 +119,6 @@ $$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\!\left(Ls - \frac{s^2}{2}\right), \q
 
 ![2D side view](results/figures/zigzag_2d_side_view.png)
 
-**3-D undeformed body**
-
-![3D undeformed](results/figures/zigzag_3d_undeformed.png)
 
 *Orange = zig-zag teeth; green = plain inlet / free-tip end sections.*
 
@@ -141,25 +138,25 @@ Training uses 4 000 iterations with the original hyperparameters (width = 64, de
 
 ### Training and Parameter Convergence
 
-![identified parameters](results/figures/identified_parameters.png)
+![identified parameters](results/identified_parameters.png)
 
 Both $EI_\text{eff}$ and $k_p$ undergo a sharp transient in the first ~400 iterations before settling. $k_p$ converges to within **0.84%** of the true value; $EI_\text{eff}$ reaches ~20% error, reflecting the identifiability limitation discussed in Experiment 1.
 
 ### Tip Displacement Response
 
-![tip response](results/figures/tip_response_curve.png)
+![tip response](results/tip_response_curve.png)
 
 PINN and MLP track the reference well up to ~45 kPa. At higher pressures the reduced-order model itself underestimates bending, which limits both approaches. Overall tip RMSE: **PINN 31.9 mm vs MLP 39.5 mm**.
 
 ### Blocked Force
 
-![blocked force](results/figures/blocked_force_curve.png)
+![blocked force](results/blocked_force_curve.png)
 
 The PINN's blocked-force surrogate ($F_b \approx \frac{8}{3} k_p p$) overlaps the nonlinear reference almost exactly — RMSE **1.63 mN** — directly confirming accurate $k_p$ identification.
 
 ### Deformed Centerline Comparison
 
-![shape examples](results/figures/shape_examples.png)
+![shape examples](results/shape_examples.png)
 
 Eight pressure snapshots (10 → 100 kPa) show the model's operating window. Tip errors stay below **3 mm for both models up to 40 kPa**. Beyond 55 kPa, errors grow rapidly as the tip angle exceeds 45° and geometric nonlinearity dominates. The PINN achieves consistently lower tip error than the MLP at every pressure level.
 
@@ -178,7 +175,7 @@ Two PINN variants trained on identical data — Version A removes the blocked-fo
 | Tip RMSE | 39.2 mm | 32.0 mm |
 | Blocked force RMSE | 79.78 mN | 1.63 mN |
 
-![exp1](results/figures/exp1_blocked_force_ablation.png)
+![exp1](results/exp1_blocked_force_ablation.png)
 
 Without the blocked-force loss, $k_p$ drifts to 41% error because tip-displacement data cannot distinguish $(EI_\text{eff},\, k_p)$ from $(\alpha\, EI_\text{eff},\, \alpha\, k_p)$ for any scalar $\alpha$. Adding blocked-force supervision — which is proportional to $k_p$ and nearly independent of $EI_\text{eff}$ — collapses $k_p$ error to below 1% and also improves $EI_\text{eff}$ identification as a downstream effect.
 
@@ -196,7 +193,7 @@ Without the blocked-force loss, $k_p$ drifts to 41% error because tip-displaceme
 
 Results averaged over 3 random seeds; error bars show ± 1 std.
 
-![exp2](results/figures/exp2_data_regime_comparison.png)
+![exp2](results/exp2_data_regime_comparison.png)
 
 The PINN consistently outperforms the MLP on both tip RMSE and shape RMSE. The advantage is largest under **low data**: PINN 42.4 mm vs MLP 59.8 mm tip RMSE — a **29% reduction** — with noticeably lower cross-seed variance, consistent with the physics constraints acting as an effective regulariser. The MLP's performance degrades more steeply as data is reduced, while the PINN's physics embedding provides a stable lower bound.
 
@@ -216,6 +213,6 @@ The model captures actuator behaviour well at **10–45 kPa** (tip angle ≲ 40�
 
 ## All Figures Overview
 
-![complete summary](results/figures/complete_summary.png)
+![complete summary](results/complete_summary.png)
 
 *Comprehensive 3×4 panel: training loss breakdown, PINN loss components, parameter convergence, parameter identification bar chart, tip displacement response, absolute tip error, blocked force, three representative centerline panels at low / mid / high pressure, and a metrics summary table.*

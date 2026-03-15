@@ -85,14 +85,14 @@ $$EI_\text{eff}\,\theta''(s) + k_p\, p = 0$$
 **Boundary conditions (clamped-free):**
 $$\theta(0)=0,\quad x(0)=0,\quad y(0)=0,\quad \theta'(L)=0$$
 
-The unknowns $EI_\text{eff}$ and $k_p$ are treated as **trainable scalar parameters** inside the PINN. The total loss is:
+The two unknowns $EI_\text{eff}$ and $k_p$ are treated as **trainable parameters** inside the PINN. The PINN total loss combines:
 
-$$\mathcal{L} = \underbrace{\mathcal{L}_\text{phys}}_{\text{PDE residual}} + \underbrace{\mathcal{L}_\text{BC}}_{\text{boundary cond.}} + \underbrace{\mathcal{L}_\text{shape}}_{\text{centerline obs.}} + \underbrace{\mathcal{L}_\text{tip}}_{\text{tip disp. \& angle}} + \underbrace{\mathcal{L}_\text{block}}_{\text{blocked force}}$$
+$$\mathcal{L} = \underbrace{\mathcal{L}_\text{phys}}_{\text{PDE residual}} + \underbrace{\mathcal{L}_\text{BC}}_{\text{boundary cond.}} + \underbrace{\mathcal{L}_\text{shape}}_{\text{centerline obs.}} + \underbrace{\mathcal{L}_\text{tip}}_{\text{tip disp. \ angle}} + \underbrace{\mathcal{L}_\text{block}}_{\text{blocked force}}$$
 
-**Blocked force** is the tip reaction force required to hold $y(L)=0$ under pressure — the standard experimental definition for soft gripper characterisation. It is computed via a Brent-solver constrained BVP.
+**Blocked force** is defined as the tip reaction force required to hold $y(L)=0$ under pressure loading — the physically meaningful definition for soft gripper design. It is computed via a constrained BVP solver and used as a supervised observation.
 
-**Analytical solution** (small deformation):
-$$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\!\left(Ls - \frac{s^2}{2}\right), \qquad y(L) \approx \frac{k_p\, p\, L^3}{3\,EI_\text{eff}}, \qquad F_b \approx k_p\, p$$
+**Analytical baseline solution** (for uniform actuation moment, small deformation):
+$$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\left(Ls - \frac{s^2}{2}\right), \qquad y(L) \approx \frac{k_p\, p\, L^3}{3\,EI_\text{eff}}, \qquad F_b \approx k_p\, p$$
 
 > **Identifiability note.** The ratio $k_p / EI_\text{eff}$ determines tip displacement, so tip data alone cannot disentangle the two parameters. Blocked-force data ($F_b \propto k_p$, nearly independent of $EI_\text{eff}$) resolves this degeneracy — confirmed experimentally in Experiment 1.
 
@@ -102,7 +102,7 @@ $$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\!\left(Ls - \frac{s^2}{2}\right), \q
 
 | Parameter | Value | | Parameter | Value |
 |-----------|-------|-|-----------|-------|
-| Total length $L$ | 150 mm | | Active zig-zag region | 110 mm |
+| Total length $L$ | 200 mm | | Active zig-zag region | 110 mm |
 | Cross-section $w \times h$ | 22 × 22 mm | | Number of teeth $N$ | 10 |
 | Wall thickness $t$ | 2 mm | | Tooth pitch | 11 mm |
 | Inlet plain $l_1$ | 20 mm | | Tooth depth | 9 mm |

@@ -106,7 +106,7 @@ python src/experiments.py --exp all        # Both experiments
 
 ### Training Histories
 
-![training histories](results/figures/training_validation_histories.png)
+![training histories](results/training_validation_histories.png)
 
 Both the PINN and MLP converge smoothly. The PINN training loss is higher than the MLP because it also minimizes physics and boundary-condition residuals in addition to fitting the data. Both models reach stable validation loss without overfitting.
 
@@ -114,7 +114,7 @@ Both the PINN and MLP converge smoothly. The PINN training loss is higher than t
 
 ### PINN Parameter Identification
 
-![identified parameters](results/figures/identified_parameters.png)
+![identified parameters](results/identified_parameters.png)
 
 The PINN simultaneously identifies $EI_\text{eff}$ and $k_p$ during training. Both parameters undergo an initial transient (approximately 0–400 iterations) as the network navigates the loss landscape, then converge toward their final values. The identified $k_p$ reaches the true value closely (error < 1%), while $EI_\text{eff}$ converges to within approximately 20% — a consequence of the EI–kp degeneracy along the tip-displacement manifold (see Experiment 1 for analysis).
 
@@ -122,7 +122,7 @@ The PINN simultaneously identifies $EI_\text{eff}$ and $k_p$ during training. Bo
 
 ### Tip Displacement Response
 
-![tip response](results/figures/tip_response_curve.png)
+![tip response](results/tip_response_curve.png)
 
 Both the PINN and MLP match the reference well in the low-to-medium pressure range (10–45 kPa). At higher pressures, both models underestimate the tip displacement due to the large-deformation nonlinearity that the reduced-order linear model cannot fully capture. The PINN outperforms the MLP at higher pressures, with tip RMSE of **31.9 mm** vs **39.5 mm**.
 
@@ -130,7 +130,7 @@ Both the PINN and MLP match the reference well in the low-to-medium pressure ran
 
 ### Blocked Force
 
-![blocked force](results/figures/blocked_force_curve.png)
+![blocked force](results/blocked_force_curve.png)
 
 The PINN's linear blocked-force surrogate ($F_b \approx \frac{8}{3} k_p p$) tracks the nonlinear reference closely throughout the full pressure range, with RMSE of **1.63 mN**. This excellent agreement confirms that $k_p$ is identified accurately — blocked force is nearly independent of $EI_\text{eff}$, making it the most informative observation for $k_p$ identification.
 
@@ -138,7 +138,7 @@ The PINN's linear blocked-force surrogate ($F_b \approx \frac{8}{3} k_p p$) trac
 
 ### Deformed Centerline Comparison
 
-![shape examples](results/figures/shape_examples.png)
+![shape examples](results/shape_examples.png)
 
 Centerline shapes at 8 pressure levels reveal where each model fits well and where it breaks down. Both PINN and MLP track the reference closely up to approximately **40 kPa** (tip errors < 3 mm). Beyond 55 kPa, errors grow substantially as the actuator enters the large-deformation regime (tip angle > 45°). At 100 kPa the reference centerline curves back past the vertical, a geometric nonlinearity that neither model can reproduce with the current reduced-order formulation. The PINN consistently achieves smaller tip errors than the MLP across all pressure levels.
 
@@ -146,7 +146,7 @@ Centerline shapes at 8 pressure levels reveal where each model fits well and whe
 
 ### Complete Results Summary
 
-![complete summary](results/figures/complete_summary.png)
+![complete summary](results/complete_summary.png)
 
 *Comprehensive 3×4 panel: training losses, physics loss breakdown, parameter convergence, parameter identification bar chart, tip response, tip error, blocked force, three centerline panels, and a metrics summary table.*
 
@@ -160,7 +160,7 @@ Two PINN variants are trained on identical data:
 - **Version A** — blocked-force loss removed ($w_\text{block} = 0$)
 - **Version B** — blocked-force loss included ($w_\text{block} = 10$, original)
 
-![exp1](results/figures/exp1_blocked_force_ablation.png)
+![exp1](results/exp1_blocked_force_ablation.png)
 
 **Key findings:**
 
@@ -187,7 +187,7 @@ Three data budgets are tested (averaged over 3 random seeds):
 | Medium | 6 levels (original) |
 | High | 8 levels |
 
-![exp2](results/figures/exp2_data_regime_comparison.png)
+![exp2](results/exp2_data_regime_comparison.png)
 
 **Key findings:**
 

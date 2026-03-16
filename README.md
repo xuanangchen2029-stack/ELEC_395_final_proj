@@ -80,7 +80,7 @@ The actuator centerline is modeled as an inextensible Euler–Bernoulli beam par
 $$\frac{dx}{ds} = \cos\theta(s), \qquad \frac{dy}{ds} = \sin\theta(s)$$
 
 **Moment balance (reduced-order):**
-$$EI_\text{eff}\,\theta''(s) + k_p\, p = 0$$
+$$EI_\text{eff}\theta''(s) + k_p\ p = 0$$
 
 **Boundary conditions (clamped-free):**
 $$\theta(0)=0,\quad x(0)=0,\quad y(0)=0,\quad \theta'(L)=0$$
@@ -92,7 +92,7 @@ $$\mathcal{L} = \underbrace{\mathcal{L}_\text{phys}}_{\text{PDE residual}} + \un
 **Blocked force** is defined as the tip reaction force required to hold $y(L)=0$ under pressure loading — the physically meaningful definition for soft gripper design. It is computed via a constrained BVP solver and used as a supervised observation.
 
 **Analytical baseline solution** (for uniform actuation moment, small deformation):
-$$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\left(Ls - \frac{s^2}{2}\right), \qquad y(L) \approx \frac{k_p\, p\, L^3}{3\,EI_\text{eff}}, \qquad F_b \approx k_p\, p$$
+$$\theta(s) = \frac{k_p\, p}{EI_\text{eff}}\left(Ls - \frac{s^2}{2}\right), \qquad y(L) \approx \frac{k_p\ p\ L^3}{3\EI_\text{eff}}, \qquad F_b \approx k_p\ p$$
 
 > **Identifiability note.** The ratio $k_p / EI_\text{eff}$ determines tip displacement, so tip data alone cannot disentangle the two parameters. Blocked-force data ($F_b \propto k_p$, nearly independent of $EI_\text{eff}$) resolves this degeneracy — confirmed experimentally in Experiment 1.
 

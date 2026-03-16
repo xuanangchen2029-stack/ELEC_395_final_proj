@@ -7,7 +7,7 @@ A reduced-order inverse modeling framework that identifies effective mechanical 
 ## Key Results
 
 - **$k_p$ identified to < 1% error** — blocked-force supervision pins the pressure-to-actuation coefficient with high precision.
-- **Blocked-force loss resolves the $EI_\text{eff}$–$k_p$ identifiability problem** — without it, $k_p$ error rises to 41% due to a fundamental parameter degeneracy along the tip-displacement manifold.
+- **Blocked-force loss resolves the $EI_\text{eff}$– $k_p$ identifiability problem** — without it, $k_p$ error rises to 41% due to a fundamental parameter degeneracy along the tip-displacement manifold.
 - **PINN outperforms MLP under sparse data** — 29% lower tip RMSE in the low-data regime — but large-deformation shape prediction (> 55 kPa) remains challenging for both models given the current reduced-order formulation.
 
 ---
